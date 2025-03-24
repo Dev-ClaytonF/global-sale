@@ -42,8 +42,12 @@ export default function App() {
   const location = useLocation();
 
   useEffect(() => {
-    // Envia visualização de página para o Google Analytics
-    ReactGA.send({ hitType: "pageview", page: location.pathname });
+    // Envia visualização de página para todas as propriedades do Google Analytics
+    ReactGA.send({
+      hitType: "pageview",
+      page: location.pathname,
+      title: document.title
+    });
   }, [location]);
 
   return (
