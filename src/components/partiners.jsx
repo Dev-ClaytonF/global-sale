@@ -20,7 +20,7 @@ function Partiners() {
             
             // Configura estilo para rolagem infinita com velocidade adequada
             setAnimationStyle({
-                animation: `scroll 30s linear infinite`,
+                animation: `scroll 25s linear infinite`,
             });
         };
         
@@ -39,7 +39,7 @@ function Partiners() {
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(-50%);
+                transform: translateX(-60%);
             }
         }
     `;
@@ -87,8 +87,8 @@ function Partiners() {
     ];
     
     // Criar um conjunto de logos que será duplicado para garantir rolagem contínua
-    // A técnica é mostrar duas cópias do mesmo conjunto, e a animação apenas desloca metade do conjunto
-    const allLogos = [...logos, ...logos, ...logos, ...logos];
+    // Duplicamos mais vezes para garantir a continuidade com a nova velocidade
+    const allLogos = [...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos];
     
     return (
         <div className="w-full bg-[#000000] border-t border-b border-[#000000] py-4">

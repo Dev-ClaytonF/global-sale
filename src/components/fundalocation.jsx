@@ -47,7 +47,7 @@ function FundAllocation() {
                                     <tr key={index} className="hover:bg-purple-900/10 transition-colors">
                                         <td className="py-3 md:py-4 px-3 md:px-6 text-xs md:text-sm text-gray-200 flex items-center gap-2">
                                             <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${item.color} flex-shrink-0`}></div>
-                                            <span className="truncate max-w-[150px] md:max-w-none">
+                                            <span>
                                                 {item.category}
                                             </span>
                                         </td>
