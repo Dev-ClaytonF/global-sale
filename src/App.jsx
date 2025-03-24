@@ -1,4 +1,6 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
+import ReactGA from 'react-ga4'
 import Dashboard from './pages/dashboard'
 import Whitepaper from './pages/whitepaper'
 import Header from './components/header'
@@ -37,6 +39,13 @@ const Contato = () => (
 )
 
 export default function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Envia visualização de página para o Google Analytics
+    ReactGA.send({ hitType: "pageview", page: location.pathname });
+  }, [location]);
+
   return (
     <div className="min-h-screen bg-[#000000] text-white flex flex-col relative border-none">
       <Header />
