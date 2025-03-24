@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Classe específica para usar a fonte Sarpanch */
+.font-sarpanch {
+  font-family: 'Sarpanch', sans-serif;
+}
+
+/* Remover a classe específica para não aplicar a fonte em outros elementos */
+
+/* Padding global para elementos não ficarem abaixo do header */
+@layer base {
+  main, 
+  section, 
+  .header-padding {
+    padding-top: 100px; /* Ajuste conforme a altura do seu header */
+  }
+
+  @media (max-width: 768px) {
+    main, 
+    section, 
+    .header-padding {
+      padding-top: 60px; /* Valor menor para mobile */
+    }
+  }
+}
