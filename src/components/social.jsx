@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { supabase } from '../services/supabase'; // Corrigido para usar o serviço existente
+import binanceLogo from '../assets/binance.png';
+import coinmarketcapLogo from '../assets/coinmarktcap.png';
 
 function Social() {
     // Estado para rastrear quais botões foram clicados
@@ -289,7 +291,7 @@ function Social() {
                             >
                                 <span>{clickedButtons.binance ? '✓ Followed on Binance Square' : 'Follow on Binance Square'}</span>
                                 <img 
-                                    src="/src/assets/binance.png" 
+                                    src={binanceLogo} 
                                     alt="Binance" 
                                     className="w-6 h-6"
                                 />
@@ -303,7 +305,7 @@ function Social() {
                             >
                                 <span>{clickedButtons.coinmarketcap ? '✓ Followed on CoinMarketCap' : 'Follow on CoinMarketCap'}</span>
                                 <img 
-                                    src="/src/assets/coinmarktcap.png" 
+                                    src={coinmarketcapLogo} 
                                     alt="CoinMarketCap" 
                                     className="w-6 h-6"
                                 />
