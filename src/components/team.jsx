@@ -50,7 +50,7 @@ function Team() {
             bio: "Experienced Fullstack developer in Web3 interfaces and blockchain integrations. Contributed to multiple open-source projects in the crypto community.",
             social: {
                 twitter: "https://x.com/Farzik_",
-                linkedin: "https://www.linkedin.com/in/clayton-flauzino-ba0aa8351"
+                linkedin: "https://www.linkedin.com/in/claytonrafaeldev"
             }
         }
     ];
