@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../components/header';
 import Footer from '../components/footer';
+import binanceLogo from '../assets/binance.png';
 
 function ContactUs() {
     const [formData, setFormData] = useState({
@@ -164,6 +165,21 @@ function ContactUs() {
                             <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.515 7.125c-.112.52-.519.817-1.046.817-.35 0-.712-.162-1.099-.454l-2.67-1.967-1.28 1.234a.722.722 0 01-.516.214.707.707 0 01-.707-.707v-2.962l-2.85-2.105c-.38-.28-.506-.793-.217-1.211a.947.947 0 01.68-.382.92.92 0 01.574.12l8.19 4.167c.255.13.396.406.456.703a.84.84 0 01 0 .408z" />
                         </svg>
                         Join Our Telegram Channel
+                    </a>
+                </div>
+                
+                <div className="bg-black p-6 rounded-xl border border-neutral-800 shadow-md mb-8">
+                    <h2 className="text-xl font-semibold mb-4 bg-gradient-to-r from-white to-white bg-clip-text text-transparent">Follow Us on Binance Square</h2>
+                    <p className="text-white mb-4">
+                        Stay updated with our latest news and announcements by following us on Binance Square. Join our community for exclusive updates and events.
+                    </p>
+                    <a href="https://app.binance.com/uni-qr/cpro/startupx?l=pt-BR&r=1088034711&uc=web_square_share_link&us=copylink" target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-4 py-2 bg-yellow-600 hover:bg-yellow-500 text-white rounded-md transition-colors">
+                        <img 
+                            src={binanceLogo} 
+                            alt="Binance" 
+                            className="w-5 h-5 mr-2"
+                        />
+                        Follow on Binance Square
                     </a>
                 </div>
             </div>

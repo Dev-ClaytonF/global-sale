@@ -286,7 +286,10 @@ function Social() {
                             {/* Botão Binance */}
                             <button 
                                 className={`${clickedButtons.binance ? 'bg-gray-600' : 'bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-600 hover:to-yellow-400'} text-white py-3 px-4 rounded-md w-full flex items-center justify-between transition-all duration-300`}
-                                onClick={() => handleButtonClick('binance')}
+                                onClick={() => {
+                                    handleButtonClick('binance');
+                                    window.open('https://app.binance.com/uni-qr/cpro/startupx?l=pt-BR&r=1088034711&uc=web_square_share_link&us=copylink', '_blank', 'noopener,noreferrer');
+                                }}
                                 disabled={clickedButtons.binance}
                             >
                                 <span>{clickedButtons.binance ? '✓ Followed on Binance Square' : 'Follow on Binance Square'}</span>
