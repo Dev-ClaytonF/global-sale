@@ -303,7 +303,10 @@ function Social() {
                             {/* Botão CoinMarketCap */}
                             <button 
                                 className={`${clickedButtons.coinmarketcap ? 'bg-gray-600' : 'bg-gradient-to-r from-blue-900 to-blue-800 hover:from-blue-800 hover:to-blue-900'} text-white py-3 px-4 rounded-md w-full flex items-center justify-between transition-all duration-300`}
-                                onClick={() => handleButtonClick('coinmarketcap')}
+                                onClick={() => {
+                                    handleButtonClick('coinmarketcap');
+                                    window.open('https://coinmarketcap.com/community/profile/startupx/', '_blank', 'noopener,noreferrer');
+                                }}
                                 disabled={clickedButtons.coinmarketcap}
                             >
                                 <span>{clickedButtons.coinmarketcap ? '✓ Followed on CoinMarketCap' : 'Follow on CoinMarketCap'}</span>
