@@ -262,7 +262,10 @@ function Social() {
                             {/* Botão Telegram */}
                             <button 
                                 className={`${clickedButtons.telegram ? 'bg-gray-600' : 'bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-cyan-400 hover:to-blue-500'} text-white py-3 px-4 rounded-md w-full flex items-center justify-between transition-all duration-300`}
-                                onClick={() => handleButtonClick('telegram')}
+                                onClick={() => {
+                                    handleButtonClick('telegram');
+                                    window.open('https://t.me/startUpXSTP', '_blank', 'noopener,noreferrer');
+                                }}
                                 disabled={clickedButtons.telegram}
                             >
                                 <span>{clickedButtons.telegram ? '✓ Joined Telegram' : 'Join Telegram'}</span>
