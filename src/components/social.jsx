@@ -274,7 +274,10 @@ function Social() {
                             {/* Botão YouTube */}
                             <button 
                                 className={`${clickedButtons.youtube ? 'bg-gray-600' : 'bg-gradient-to-r from-red-500 to-orange-500 hover:from-orange-500 hover:to-red-500'} text-white py-3 px-4 rounded-md w-full flex items-center justify-between transition-all duration-300`}
-                                onClick={() => handleButtonClick('youtube')}
+                                onClick={() => {
+                                    handleButtonClick('youtube');
+                                    window.open('https://www.youtube.com/@startupxchain', '_blank', 'noopener,noreferrer');
+                                }}
                                 disabled={clickedButtons.youtube}
                             >
                                 <span>{clickedButtons.youtube ? '✓ Subscribed to YouTube' : 'Subscribe YouTube'}</span>
