@@ -39,7 +39,7 @@ function Team() {
             image: "./img/team/member4.png", // Caminho modificado para ser relativo
             bio: "A marketing expert focused on Brand Strategy, Content Marketing, UX/UI Strategy, and Growth Marketing, working to accelerate adoption and democratize access to the benefits of Startupx blockchain and technology.",
             social: {
-                twitter: "https://x.com/FernandaFlzn",
+                twitter: "https://x.com/FerFlauzino_",
                 linkedin: "https://www.linkedin.com/in/fernanda-flauzino-57a5b1357"
             }
         },
