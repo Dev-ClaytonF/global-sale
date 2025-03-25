@@ -43,64 +43,12 @@ function ContactUs() {
         <div className="bg-black text-white min-h-screen">
             <Header />
             
-         
-            
             <div className="container mx-auto px-4 py-8 md:py-12 max-w-5xl">
                 <h1 className="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-10">
                     <span className="bg-gradient-to-r from-white to-white bg-clip-text text-transparent">
                         Contact Us
                     </span>
                 </h1>
-                
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                    <div className="bg-black p-6 rounded-xl border border-neutral-800 shadow-md">
-                        <h2 className="text-xl font-semibold mb-4 bg-gradient-to-r from-white to-white bg-clip-text text-transparent">United States</h2>
-                        <div className="flex items-center mb-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                            </svg>
-                            <p className="text-white whitespace-nowrap">
-                                <span className="font-semibold">Telegram:</span> +1 (x) xxxxxxxx
-                            </p>
-                        </div>
-                        <p className="text-white mb-2">
-                            <span className="font-semibold">Support Hours:</span>
-                        </p>
-                        <p className="text-white">Monday to Friday: 9:00 AM - 6:00 PM EST</p>
-                    </div>
-                    
-                    <div className="bg-black p-6 rounded-xl border border-neutral-800 shadow-md">
-                        <h2 className="text-xl font-semibold mb-4 bg-gradient-to-r from-white to-white bg-clip-text text-transparent">Brazil</h2>
-                        <div className="flex items-center mb-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                            </svg>
-                            <p className="text-white whitespace-nowrap">
-                                <span className="font-semibold">Telegram:</span> +55 (x) xxxxxxxx
-                            </p>
-                        </div>
-                        <p className="text-white mb-2">
-                            <span className="font-semibold">Support Hours:</span>
-                        </p>
-                        <p className="text-white">Monday to Friday: 9:00 AM - 6:00 PM BRT</p>
-                    </div>
-                    
-                    <div className="bg-black p-6 rounded-xl border border-neutral-800 shadow-md">
-                        <h2 className="text-xl font-semibold mb-4 bg-gradient-to-r from-white to-white bg-clip-text text-transparent">Europe</h2>
-                        <div className="flex items-center mb-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                            </svg>
-                            <p className="text-white whitespace-nowrap">
-                                <span className="font-semibold">Telegram:</span> +44 (x) xxxxxxxx
-                            </p>
-                        </div>
-                        <p className="text-white mb-2">
-                            <span className="font-semibold">Support Hours:</span>
-                        </p>
-                        <p className="text-white">Monday to Friday: 9:00 AM - 6:00 PM CET</p>
-                    </div>
-                </div>
                 
                 <div className="bg-black rounded-xl overflow-hidden shadow-lg border border-neutral-800 mb-12">
                     <div className="p-6 md:p-8">
