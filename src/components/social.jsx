@@ -15,6 +15,9 @@ function Social() {
         coinmarketcap: false
     });
     
+    // Estado para controlar os popups
+    const [activePopup, setActivePopup] = useState(null);
+    
     // Estado para os campos do formulário
     const [formData, setFormData] = useState({
         fullName: '',
@@ -38,6 +41,23 @@ function Social() {
             ...prev,
             [buttonName]: true
         }));
+    };
+    
+    // Função para abrir popup
+    const openPopup = (popupName) => {
+        setActivePopup(popupName);
+    };
+    
+    // Função para fechar popup
+    const closePopup = () => {
+        setActivePopup(null);
+    };
+    
+    // Função para completar ação no X (Twitter)
+    const completeXAction = (buttonName) => {
+        handleButtonClick(buttonName);
+        window.open('https://x.com/startupxchain', '_blank', 'noopener,noreferrer');
+        closePopup();
     };
     
     // Função para atualizar o estado do formulário
@@ -112,6 +132,29 @@ function Social() {
             });
         }
     };
+    
+    // Componente de Popup/Modal
+    const Popup = ({ title, actionButton, onAction }) => (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg p-6 max-w-sm w-full">
+                <h3 className="text-xl font-semibold mb-4 text-gray-800">{title}</h3>
+                <div className="flex justify-end mt-4">
+                    <button 
+                        className="mr-2 px-4 py-2 text-gray-600 rounded hover:bg-gray-100"
+                        onClick={closePopup}
+                    >
+                        Cancel
+                    </button>
+                    <button 
+                        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                        onClick={onAction}
+                    >
+                        {actionButton}
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
     
     return (
         <div className="flex justify-center items-center w-full py-8 flex-col">
@@ -228,10 +271,10 @@ function Social() {
                             {/* Botões X (Twitter) - Tarefas */}
                             <button 
                                 className={`${clickedButtons.twitter1 ? 'bg-gray-600' : 'bg-gradient-to-r from-purple-600 to-blue-500 hover:from-blue-500 hover:to-purple-600'} text-white py-3 px-4 rounded-md w-full flex items-center justify-between transition-all duration-300`}
-                                onClick={() => handleButtonClick('twitter1')}
+                                onClick={() => openPopup('twitter1')}
                                 disabled={clickedButtons.twitter1}
                             >
-                                <span>{clickedButtons.twitter1 ? '✓ Followed @example on X' : 'Follow @example on X'}</span>
+                                <span>{clickedButtons.twitter1 ? '✓ Followed @startupxchain on X' : 'Follow @startupxchain on X'}</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                                 </svg>
@@ -239,10 +282,10 @@ function Social() {
                             
                             <button 
                                 className={`${clickedButtons.twitter2 ? 'bg-gray-600' : 'bg-gradient-to-r from-purple-600 to-blue-500 hover:from-blue-500 hover:to-purple-600'} text-white py-3 px-4 rounded-md w-full flex items-center justify-between transition-all duration-300`}
-                                onClick={() => handleButtonClick('twitter2')}
+                                onClick={() => openPopup('twitter2')}
                                 disabled={clickedButtons.twitter2}
                             >
-                                <span>{clickedButtons.twitter2 ? '✓ Reposted @example on X' : 'Repost @example on X'}</span>
+                                <span>{clickedButtons.twitter2 ? '✓ Reposted @startupxchain on X' : 'Repost @startupxchain on X'}</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                                 </svg>
@@ -250,7 +293,7 @@ function Social() {
                             
                             <button 
                                 className={`${clickedButtons.twitter3 ? 'bg-gray-600' : 'bg-gradient-to-r from-purple-600 to-blue-500 hover:from-blue-500 hover:to-purple-600'} text-white py-3 px-4 rounded-md w-full flex items-center justify-between transition-all duration-300`}
-                                onClick={() => handleButtonClick('twitter3')}
+                                onClick={() => openPopup('twitter3')}
                                 disabled={clickedButtons.twitter3}
                             >
                                 <span>{clickedButtons.twitter3 ? '✓ Posted with #xstp #startupx' : 'Post on X #xstp #startupx'}</span>
@@ -338,6 +381,31 @@ function Social() {
                     </div>
                 </div>
             </div>
+            
+            {/* Popups para os botões do X (Twitter) */}
+            {activePopup === 'twitter1' && (
+                <Popup 
+                    title="Follow on X"
+                    actionButton="Follow"
+                    onAction={() => completeXAction('twitter1')}
+                />
+            )}
+            
+            {activePopup === 'twitter2' && (
+                <Popup 
+                    title="Repost our last post"
+                    actionButton="Complete task"
+                    onAction={() => completeXAction('twitter2')}
+                />
+            )}
+            
+            {activePopup === 'twitter3' && (
+                <Popup 
+                    title="Post something related to our token, and put #xstp #startupx"
+                    actionButton="Complete task"
+                    onAction={() => completeXAction('twitter3')}
+                />
+            )}
         </div>
     )
 }   
