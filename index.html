@@ -2,12 +2,42 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png+xml" href="/xstp.png" />
+    <link rel="icon" type="image/svg+xml" href="/x.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google tag (gtag.js) - Remarketing global -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16903823372"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-16903823372');
+      
+      // Configuração inicial do modo de consentimento
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'ad_user_data': 'denied', 
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      
+      // Verificar se o consentimento já foi dado anteriormente
+      const consentStatus = localStorage.getItem('cookie-consent');
+      if (consentStatus === 'all') {
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'analytics_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted'
+        });
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sarpanch:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>StartupX</title>
+    <!-- CSS para o Cookie Consent -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@2.8.9/dist/cookieconsent.css" />
   </head>
   <body>
     <div id="root"></div>

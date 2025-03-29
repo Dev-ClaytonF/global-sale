@@ -30,6 +30,18 @@ const Footer = () => {
             <Link to="/cookies" className="text-white hover:text-purple-800 transition-colors duration-200 text-sm px-2">
             Cookies
             </Link>
+            <button 
+              onClick={() => {
+                // Resetar o consentimento para forçar reabertura do banner
+                localStorage.removeItem('cookie-consent');
+                localStorage.removeItem('ga_client_id');
+                // Recarregar a página para mostrar o banner
+                window.location.reload();
+              }}
+              className="text-white hover:text-purple-800 transition-colors duration-200 text-sm px-2"
+            >
+              Cookie Preferences
+            </button>
           </div>
           <div className="w-full flex justify-center sm:hidden">
             <a href={whitepaperPdf} target="_blank" rel="noopener noreferrer" className="text-white hover:text-violet-700 transition-colors duration-200 text-sm px-2">
@@ -55,6 +67,18 @@ const Footer = () => {
             <Link to="/cookies" className="text-white hover:text-violet-700 transition-colors duration-200 text-sm px-2">
               Cookies
             </Link>
+            <button 
+              onClick={() => {
+                // Resetar o consentimento para forçar reabertura do banner
+                localStorage.removeItem('cookie-consent');
+                localStorage.removeItem('ga_client_id');
+                // Recarregar a página para mostrar o banner
+                window.location.reload();
+              }}
+              className="text-white hover:text-violet-700 transition-colors duration-200 text-sm px-2"
+            >
+              Preferences
+            </button>
           </div>
         </nav>
         

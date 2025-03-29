@@ -55,6 +55,14 @@ function Social() {
     
     // Função para completar ação no X (Twitter)
     const completeXAction = (buttonName) => {
+        // Rastreia clique como evento para possível atribuição de conversão futura
+        if (window.gtag) {
+            window.gtag('event', 'social_click', {
+                'social_platform': 'twitter',
+                'button_name': buttonName
+            });
+        }
+        
         handleButtonClick(buttonName);
         window.open('https://x.com/startupxchain', '_blank', 'noopener,noreferrer');
         closePopup();

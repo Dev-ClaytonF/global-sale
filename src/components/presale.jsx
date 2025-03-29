@@ -134,8 +134,51 @@ function Presale() {
             await fetchUserTransactions(address);
             
             console.log('Transação registrada com sucesso:', data);
+            
+            // Rastreia evento de conversão para Google Ads
+            if (window.gtag) {
+                // Recupera o GCLID armazenado (se disponível)
+                const storedGclid = localStorage.getItem('gclid');
+                const gclid_data = storedGclid ? { 'gclid': storedGclid } : {};
+                
+                console.log('Enviando evento de conversão para Google Ads', {
+                    'send_to': 'AW-16903823372/KhYpCPWN4a0ZEPXUmq0q',
+                    'value': parseFloat(amountIn),
+                    'currency': 'USD',
+                    'transaction_id': txHash,
+                    ...(storedGclid && { 'gclid': storedGclid })
+                });
+
+                // IMPORTANTE: Este é o evento de conversão do Google Ads para rastreamento
+                window.gtag('event', 'conversion', {
+                    'send_to': 'AW-16903823372/KhYpCPWN4a0ZEPXUmq0q',  // Código de rastreamento de conversão
+                    'value': parseFloat(amountIn),
+                    'currency': 'USD',
+                    'transaction_id': txHash,
+                    ...gclid_data // Inclui o GCLID se disponível
+                });
+
+                // Evento de compra para o GA4
+                window.gtag('event', 'purchase', {
+                    'transaction_id': txHash,
+                    'value': parseFloat(amountIn),
+                    'currency': 'USD',
+                    'items': [
+                        {
+                            'item_name': 'XSTP Token',
+                            'item_id': 'XSTP-' + activeStage?.stage_number,
+                            'price': parseFloat(activeStage?.preco_token || 0),
+                            'quantity': parseFloat(amountOut)
+                        }
+                    ],
+                    ...gclid_data // Inclui o GCLID também no evento de compra
+                });
+            }
+            
+            return { success: true };
         } catch (error) {
             console.error('Erro ao processar registro de transação:', error);
+            return { success: false };
         }
     };
 
@@ -183,10 +226,37 @@ function Presale() {
                 // Calcular usando o preço do BNB já obtido
                 const tokens = await calculateTokensBNB(amount, bnbPriceUSD);
                 setEstimatedTokens(tokens);
+                
+                // Enviar evento de remarketing para usuários que calcularam tokens
+                // Isso indica alto interesse na compra
+                const consentStatus = localStorage.getItem('cookie-consent');
+                if (consentStatus === 'all' && window.gtag && parseFloat(tokens) > 0) {
+                    window.gtag('event', 'token_calculation', {
+                        'send_to': 'AW-16903823372',
+                        'value': parseFloat(amount),
+                        'currency': 'BNB',
+                        'estimated_tokens': parseFloat(tokens),
+                        'stage': activeStage?.stage_number || '0'
+                    });
+                }
+                
             } else {
                 // Usar o cálculo do contrato USDT
                 const tokens = calculateTokensUSDT(amount);
                 setEstimatedTokens(tokens);
+                
+                // Enviar evento de remarketing para usuários que calcularam tokens
+                // Isso indica alto interesse na compra
+                const consentStatus = localStorage.getItem('cookie-consent');
+                if (consentStatus === 'all' && window.gtag && parseFloat(tokens) > 0) {
+                    window.gtag('event', 'token_calculation', {
+                        'send_to': 'AW-16903823372',
+                        'value': parseFloat(amount),
+                        'currency': 'USDT',
+                        'estimated_tokens': parseFloat(tokens),
+                        'stage': activeStage?.stage_number || '0'
+                    });
+                }
             }
         } catch (error) {
             console.error('Erro ao calcular tokens:', error);
@@ -230,7 +300,7 @@ function Presale() {
                     const usdValue = amount * (bnbPriceUSD || 0);
                     
                     // Registrar a transação
-                    await registerTransaction(
+                    result = await registerTransaction(
                         result.hash,
                         'BNB',
                         amount.toString(),
@@ -310,7 +380,7 @@ function Presale() {
                 const usdValue = amountToUse;
                 
                 // Registrar a transação
-                await registerTransaction(
+                result = await registerTransaction(
                     result.hash,
                     'USDT',
                     amountToUse.toString(),
@@ -370,6 +440,29 @@ function Presale() {
             }, 8000);
         }
     };
+
+    // Adicionar remarketing quando o usuário visita a página de pré-venda
+    useEffect(() => {
+        if (activeStage && dataLoaded) {
+            // Rastrear visualização da página de pré-venda para remarketing
+            const consentStatus = localStorage.getItem('cookie-consent');
+            if (consentStatus === 'all' && window.gtag) {
+                window.gtag('event', 'view_item', {
+                    'send_to': 'AW-16903823372',
+                    'items': [{
+                        'id': `presale_stage_${activeStage.stage_number}`,
+                        'name': `XSTP Token Stage ${activeStage.stage_number}`,
+                        'price': activeStage.preco_token,
+                        'google_business_vertical': 'retail'
+                    }],
+                    'stage_number': activeStage.stage_number,
+                    'token_price': activeStage.preco_token
+                });
+                
+                console.log('Enviado evento de remarketing para visualização da pré-venda');
+            }
+        }
+    }, [activeStage, dataLoaded]);
 
     if (!activeStage && dataLoaded) {
         return (
