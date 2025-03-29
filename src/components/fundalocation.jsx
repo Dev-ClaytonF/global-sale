@@ -3,12 +3,12 @@ import React from 'react';
 function FundAllocation() {
     // Dados de alocação de fundos ordenados do maior para o menor
     const allocationData = [
-        { category: "Initial Liquidity on Exchanges", percentage: 50, color: "from-blue-500 to-purple-600" },
+        { category: "Reserve 50%", percentage: 50, color: "from-blue-500 to-purple-600" },
         { category: "Marketing and Partnerships", percentage: 13.55, color: "from-red-500 to-orange-500" },
         { category: "Co-founders", percentage: 12, color: "from-purple-600 to-pink-500" },
         { category: "Development Reserve", percentage: 8, color: "from-pink-500 to-red-500" },
         { category: "Team and Advisors", percentage: 8, color: "from-yellow-500 to-green-500" },
-        { category: "Strategic Reserve in BTC and USDT", percentage: 7, color: "from-green-500 to-blue-500" },
+        { category: "Bitcoin Strategic Reserve", percentage: 7, color: "from-green-500 to-blue-500" },
         { category: "Payment Exchange Listing", percentage: 1, color: "from-green-500 to-blue-500" },
         { category: "Community Rewards", percentage: 0.45, color: "from-green-500 to-blue-500" },
        
