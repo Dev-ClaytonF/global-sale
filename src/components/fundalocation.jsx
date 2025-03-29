@@ -3,7 +3,7 @@ import React from 'react';
 function FundAllocation() {
     // Dados de alocação de fundos ordenados do maior para o menor
     const allocationData = [
-        { category: "Reserve 50%", percentage: 50, color: "from-blue-500 to-purple-600" },
+        { category: "USDT Reserve 50%", percentage: 50, color: "from-blue-500 to-purple-600" },
         { category: "Marketing and Partnerships", percentage: 13.55, color: "from-red-500 to-orange-500" },
         { category: "Co-founders", percentage: 12, color: "from-purple-600 to-pink-500" },
         { category: "Development Reserve", percentage: 8, color: "from-pink-500 to-red-500" },
